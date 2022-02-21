@@ -1,0 +1,614 @@
+﻿
+@{
+    ViewBag.Title = "Sdt_porject_progress_view";
+}
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container" data-aos="zoom-out">
+
+        <div class="section-title">
+            <h3>SMART FACTORY <span>PRPJECT PROGRESS</span></h3>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-12">
+                <div class="d-flex flex-row justify-content-start px-2 my-2">
+                    @*@foreach (var a in ViewBag.ab)
+                    {
+                        <button class="count-box " id="@a[0].FY" onclick="btn_click(this.id)">
+                            <input type="text" value="@a[0].FY" id="year" hidden />
+                            <i class="">@a[0].FY</i>
+                            <span data-purecounter-start="0" data-purecounter-end=@a.Count data-purecounter-duration="2" class="purecounter"></span>
+                            <p>Projects</p>
+                        </button>
+                    }*@
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= Average Month %taget %Actual ======= -->
+        @*<div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-12 ">
+                    <div class="d-flex flex-row justify-content-start px-2 my-2">
+                        <div class="px-2 py-1 mx-1 box box-head">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Apr</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  2%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual 3%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">May</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  8%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual 8%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Jun</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  18%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual 18%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Jul</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  28%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual 33%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Aug</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  39%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual 42%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Sep</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  47%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual 48%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Oct</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  55%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual -%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Nov</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  63%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual -%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Dec</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  73%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual -%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Jan</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  82%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual -%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Feb</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  89%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual -%</small><br>
+                            </div>
+                        </div>
+                        <div class="px-2 py-1 mx-1 box box-head A">
+                            <div class="p-0">
+                                <label class="fs-5 fw-bold ">Mar</label>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Taget  96%</small><br>
+                            </div>
+                            <div class="p-0 text-end">
+                                <small class="text-muted">Actual -%</small><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+        <!-- SF_Progress-->
+        <div id="table">
+            <lable class="fw-bold text-black-50" id="PJ_YEAR">2021</lable><br>
+            <table class="customTable">
+                <thead>
+                    <tr class="text-center">
+                        <th style="min-width: 60px; width: 60px; max-width: 60px; z-index:50;" class="col-id-no fixed-header">SF No</th>
+                        <th style="min-width: 65px;  z-index: 50; " class="col-group fixed-header">Group</th>
+                        <th style="min-width: 350px; z-index: 50; " class="col-pj fixed-header">Project Name</th>
+                        <th style="min-width: 70px; width: 70px; z-index:50;" class="col-fw fixed-header">From When</th>
+                        <th style="min-width: 70px; width: 70px; z-index:50;" class="col-uw fixed-header">Until When</th>
+                        <th class="dev">Developer</th>
+                        <th class="dev">Incharge</th>
+                        <th class="px-2">Progress</th>
+                        <th class="month px-2 text-success">Apr</th>
+                        <th class="month px-2 text-success">May</th>
+                        <th class="month px-2 text-success">Jun</th>
+                        <th class="month px-2 text-success">Jul</th>
+                        <th class="month px-2 text-success">Aug</th>
+                        <th class="month px-2 text-success">Sep</th>
+                        <th class="month px-2 text-primary">Oct</th>
+                        <th class="month px-2 text-primary">Nov</th>
+                        <th class="month px-2 text-primary">Dec</th>
+                        <th class="month px-2 text-primary">Jan</th>
+                        <th class="month px-2 text-primary">Feb</th>
+                        <th class="month px-2 text-primary">Mar</th>
+                        <th class="">Status</th>
+                        <th class="">Remark</th>
+                        <th class="">Action</th>
+                    </tr>
+                </thead>
+
+                @*@foreach (var Progress in ViewBag.Progress)
+                {
+                    <tr class="text-center">
+                        <td class="col-id-no" rowspan="2">@Progress.SF_No</td>
+                        <td class="col-group" rowspan="2">@Progress.Group</td>
+                        <td class="col-pj pj-name" rowspan="2">@Progress.Project_Name</td>
+                        <td class="col-fw" rowspan="2">@Progress.PJ_Start</td>
+                        <td class="col-uw" rowspan="2">@Progress.PJ_End</td>
+                        <td class="dev" rowspan="2">@Progress.Dev</td>
+                        <td class="dev" rowspan="2">@Progress.Incharge</td>
+                        <td style="font-size: 13px;">Target %</td>
+
+                        @if (Progress.T_Apr >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Apr %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Apr -</td>
+                        }
+                        @if (Progress.T_May >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_May %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_May -</td>
+                        }
+                        @if (Progress.T_Jun >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Jun %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Jun -</td>
+                        }
+                        @if (Progress.T_Jul >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Jul %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Jul -</td>
+                        }
+                        @if (Progress.T_Aug >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Aug %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Aug -</td>
+                        }
+                        @if (Progress.T_Sep >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Sep %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Sep -</td>
+                        }
+                        @if (Progress.T_Oct >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Oct %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Oct -</td>
+                        }
+                        @if (Progress.T_Nov >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Nov %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Nov -</td>
+                        }
+                        @if (Progress.T_Dec >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Dec %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Dec -</td>
+                        }
+                        @if (Progress.T_Jan >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Jan %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Jan -</td>
+                        }
+                        @if (Progress.T_Feb >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Feb %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Feb -</td>
+                        }
+                        @if (Progress.T_Mar >= 0)
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Mar %</td>
+                        }
+                        else
+                        {
+                            <td style="font-size: 12px;">@Progress.T_Mar -</td>
+                        }
+
+                        <td class="col-fw" rowspan="2"></td>
+                        <td class="col-fw" rowspan="2"></td>
+                        <td class="col-fw" rowspan="2">
+                            @Html.ActionLink(" ", "Details_Project", new { id = @Progress.SF_No }, new { @class = "btn-icon bi bi-arrow-right-circle-fill fs-4 text-black-50" })
+                        </td>
+
+                    </tr>
+
+
+                    <tr class="text-center color-bg">
+                        <td class="text-primary color-bg" style="font-size: 12px;">Actual %</td>
+                        @if (Progress.A_Apr >= 0)
+                        {
+                            <td class="text-primary color-bg" style="font-size: 12px;">@Progress.A_Apr %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary color-bg" style="font-size: 12px;">@Progress.A_Apr -</td>
+                        }
+                        @if (Progress.A_May >= 0)
+                        {
+                            <td class="text-primary color-bg" style="font-size: 12px;">@Progress.A_May %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary color-bg" style="font-size: 12px;">@Progress.A_May -</td>
+                        }
+                        @if (Progress.A_Jun >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Jun %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Jun -</td>
+                        }
+                        @if (Progress.A_Jul >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Jul %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Jul -</td>
+                        }
+                        @if (Progress.A_Aug >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Aug %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Aug -</td>
+                        }
+                        @if (Progress.A_Sep >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Sep %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Sep -</td>
+                        }
+                        @if (Progress.A_Oct >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Oct %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Oct -</td>
+                        }
+                        @if (Progress.A_Nov >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Nov %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Nov -</td>
+                        }
+                        @if (Progress.A_Dec >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Dec %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Dec -</td>
+                        }
+                        @if (Progress.A_Jan >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Jan %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Jan -</td>
+                        }
+                        @if (Progress.A_Feb >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Feb %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Feb -</td>
+                        }
+                        @if (Progress.A_Mar >= 0)
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Mar %</td>
+                        }
+                        else
+                        {
+                            <td class="text-primary" style="font-size: 12px;">@Progress.A_Mar -</td>
+                        }
+                    </tr>
+                }*@
+            </table>
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+
+
+<script>
+
+    $(".dev").hover(function () {
+        function addTooltip() {
+            $(".dev").each(function () {
+                var thisTxt = $(this).text();
+                var cloneEle = document.createElement("div");
+                cloneEle = $(cloneEle);
+                cloneEle.addClass("ele-clone");
+                cloneEle.html(thisTxt);
+                $("body").append(cloneEle);
+                if ($(this).width() <= cloneEle.width()) {
+                    $(this).attr("title", thisTxt);
+                    $(this).tooltip();
+                } else {
+                    $(this).removeAttr("title");
+                }
+                cloneEle.remove();
+            });
+        };
+        addTooltip();
+    });
+
+
+    function btn_click(a_id) {
+        $("#table").empty();
+        $("#PJ_YEAR").empty();
+
+        var item = new Object();
+        item.Dp_1 = a_id;
+        var currentTime = new Date();
+        var year_now = currentTime.getFullYear();
+
+        if (year_now != item.Dp_1) {
+
+            $.ajax({
+                url: "ReturnJSONDataAjax_Data_notyear",
+                data: JSON.stringify(item),
+                type: "POST",
+                contentType: "application/Json; charset=utf-8",
+                datatype: JSON,
+                success: function (data) {
+                    if (data != 0) {
+                        var rw = "<lable class='fw-bold text-black-50'>" + item.Dp_1 + "</lable><br>" +
+                            "<table class='customTable' id='table'>" +
+                            "<thead>" +
+                            "<tr class='text-center'>" +
+                            "<th style='min-width: 60px; width: 60px; max-width: 60px; z-index: 50; ' class='col-id-no fixed-header'>SF_No</th>" +
+                            "<th style='min-width: 120px; z-index: 50; ' class='col-id-no fixed-header'>Group</th>" +
+                            "<th style='min-width: 350px; z-index: 50; ' class='col-id-no fixed-header'>Project Name</th>" +
+                            "<th style='min-width: 280px; z-index: 50; ' class='col-id-no fixed-header'>What do</th>" +
+                            "<th style='min-width: 280px; z-index: 50; ' class='col-id-no fixed-header'>Result</th>" +
+                            "<th class='dev'>Developer</th>" +
+                            "<th class='dev'>Incharge</th>" +
+                            "<th class='dev'>Action</th>" +
+                            "</tr>" +
+                            "</thead>" +
+                            "<tbody id='table_1'>" +
+                            "</tbody>" +
+                            "</table>";
+                        $("#table").append(rw).hide().fadeIn('fast');
+
+                        var row = '';
+                        $.each(data, function (index, row) {
+                            var rows =
+                                "<tr>" +
+                                "<td class='text-center'>" + row.SF_No + "</td>" +
+                                "<td class='text-center'>" + row.Group + "</td>" +
+                                "<td class='text-center'>" + row.Project_Name + "</td>" +
+                                "<td>" + row.To_Do + "</td>" +
+                                "<td>" + row.PJ_Result + "</td>" +
+                                "<td class='dev text-center'>" + row.Dev + "</td>" +
+                                "<td class='dev text-center'>" + row.Incharge + "</td>" +
+                                "<td class='text-center'><a href='../SmartFactoryProject/Details_Project/" + row.SF_No + "'><i class='btn-icon bi bi-arrow-right-circle-fill fs-4 text-black-50'></i></a></td>" +
+
+                                "</tr>";
+                            $("#table_1").append(rows).hide().fadeIn('fast');
+                        });
+                    }
+                }
+            });
+        }
+        else {
+
+            $.ajax({
+                url: "ReturnJSONDataAjax_Data_notyear",
+                data: JSON.stringify(item),
+                type: "POST",
+                contentType: "application/Json; charset=utf-8",
+                datatype: JSON,
+                success: function (data) {
+                    if (data != 0) {
+                        var rw = "<lable class='fw-bold text-black-50'>" + item.Dp_1 + "</lable><br>" +
+                            "<table class='customTable' id='table'>" +
+                            "<thead>" +
+                            "<tr class='text-center'>" +
+                            "<th style='min-width: 60px; width: 60px; max-width: 60px; z-index: 50; ' class='col-id-no fixed-header'>SF_No</th>" +
+                            "<th style='min-width: 65px; z-index: 50; ' class='col-group fixed-header'>Group</th>" +
+                            "<th style='min-width: 350px; z-index: 50; ' class='col-pj fixed-header'>Project Name</th>" +
+                            "<th style='min-width: 70px; width: 70px; max-width: 70px; z-index: 50; ' class='col-fw fixed-header'>From When</th>" +
+                            "<th style='min-width: 70px; width: 70px; max-width: 70px; z-index: 50; ' class='col-uw fixed-header'>Until When</th>" +
+                            "<th class='dev'>Developer</th>" +
+                            "<th class='dev'>Incharge</th>" +
+                            "<th class='px-2'>Progress</th>" +
+                            "<th class='month px 2 text-success'>Apr</th>" +
+                            "<th class='month px 2 text-success'>May</th>" +
+                            "<th class='month px 2 text-success'>Jun</th>" +
+                            "<th class='month px 2 text-success'>Jul</th>" +
+                            "<th class='month px 2 text-success'>Aug</th>" +
+                            "<th class='month px 2 text-success'>Sep</th>" +
+                            "<th class='month px 2 text-primary'>Oct</th>" +
+                            "<th class='month px 2 text-primary'>Nov</th>" +
+                            "<th class='month px 2 text-primary'>Dec</th>" +
+                            "<th class='month px 2 text-primary'>Jan</th>" +
+                            "<th class='month px 2 text-primary'>Feb</th>" +
+                            "<th class='month px 2 text-primary'>Mar</th>" +
+                            "<th class=''>Status</th>" +
+                            "<th class=''>Remark</th>" +
+                            "<th class=''>Action</th>" +
+                            "</tr>" +
+                            "</thead>" +
+                            "<tbody id='table_1'>" +
+                            "</tbody>" +
+                            "</table>";
+                        $("#table").append(rw).hide().fadeIn('fast');
+
+                        var row = '';
+                        $.each(data, function (index, row) {
+                            var rows =
+                                "<tr class='text-center'>" +
+                                "<td class='col-id-no' rowspan='2'>" + row.SF_No + "</td>" +
+                                "<td class='col-group' rowspan='2'>" + row.Group + "</td>" +
+                                "<td class='col-pj' rowspan='2'>" + row.Project_Name + "</td>" +
+                                "<td class='col-fw' rowspan='2'>" + row.PJ_Start + "</td>" +
+                                "<td class='col-uw' rowspan='2'>" + row.PJ_End + "</td>" +
+                                "<td class='dev' rowspan='2'>" + row.Dev + "</td>" +
+                                "<td class='dev' rowspan='2'>" + row.Incharge + "</td>" +
+                                "<td style='font-size: 13px;'>Target %</td>" +
+                                (row.T_Apr != null ? "<td style='font-size: 12px;'>" + row.T_Apr + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_May != null ? "<td style='font-size: 12px;'>" + row.T_May + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Jun != null ? "<td style='font-size: 12px;'>" + row.T_Jun + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Jul != null ? "<td style='font-size: 12px;'>" + row.T_Jul + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Aug != null ? "<td style='font-size: 12px;'>" + row.T_Aug + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Sep != null ? "<td style='font-size: 12px;'>" + row.T_Sep + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Oct != null ? "<td style='font-size: 12px;'>" + row.T_Oct + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Nov != null ? "<td style='font-size: 12px;'>" + row.T_Nov + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Dec != null ? "<td style='font-size: 12px;'>" + row.T_Dec + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Jan != null ? "<td style='font-size: 12px;'>" + row.T_Jan + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Feb != null ? "<td style='font-size: 12px;'>" + row.T_Feb + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.T_Mar != null ? "<td style='font-size: 12px;'>" + row.T_Mar + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                "<td class='col-fw' rowspan='2'></td>" +
+                                "<td class='col-fw' rowspan='2'></td>" +
+                                "<td class='text-center' rowspan='2'><a href='../SmartFactoryProject/Details_Project/" + row.SF_No + "'><i class='btn-icon bi bi-arrow-right-circle-fill fs-4 text-black-50'></i></a></td>" +
+                                "</tr>" +
+                                "<tr class='text-center color-bg'>" +
+                                "<td style='font-size: 13px;' class='text-primary'>Actual %</td>" +
+                                (row.A_Apr != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Apr + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_May != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_May + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Jun != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Jun + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Jul != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Jul + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Aug != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Aug + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Sep != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Sep + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Oct != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Oct + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Nov != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Nov + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Dec != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Dec + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Jan != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Jan + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Feb != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Feb + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+                                (row.A_Mar != null ? "<td style='font-size: 12px;' class='text-primary color-bg'>" + row.A_Mar + "%</td>" : "<td style='font-size: 12px;'>-</td>") +
+
+                                + "</tr>"
+                                ;
+                            $("#table_1").append(rows).hide().fadeIn('fast');
+
+
+                        });
+
+                    } else {
+
+                    }
+                }
+            });
+        }
+    }
+
+
+</script>

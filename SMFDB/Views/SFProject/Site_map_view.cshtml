@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Site_map_view";
+}
+<style>
+     
+</style>
+<script src="https://use.fontawesome.com/4459dc85b0.js"></script>
+<div class="card mt-4">
+    <h5 class="card-header">Site map version 1.0</h5>
+    <div class="card-body">
+        <nav class="primary">
+            <ul>
+                <li id="home">
+                    <a asp-controller="SFProject" asp-action="Home_page_menu_view">
+                        <i class="fa fa-home"></i> HOME <small></small>
+                    </a>
+                    <ul>
+                        <li>
+                            <a asp-controller="SDTDashboard" asp-action="Sdt_dashboard_view"><i class=""></i> DASHBOARD <small></small></a>
+                        </li>
+                        <li>
+                            <a asp-controller="SDTA" asp-action="Sdt_ax_main_view"><i class=""></i>SF A1-10</a>
+                            <ul>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-1</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-2</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-3</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-4</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-5</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-6</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-7</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-8</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Anine" asp-action="Main_audit_anine_view">A-9</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="" asp-action="">A-10</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a asp-controller="SFProject" asp-action="Sdt_porject_view"><i class=""></i> SF PROJECT <small></small></a>
+                        </li>
+                        <li>
+                            <a asp-controller="SFProject" asp-action="Sdt_porject_progress_view"><i class=""></i> PROJECT PROGRESS <small></small></a>
+                        </li>
+                        <li>
+                            <a asp-controller="Knowledge" asp-action="Knowledge_center_view">
+                                <i class=""></i> KNOWLEDGE CENTER
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="SDTActivity" asp-action="Sdt_activity_view">
+                                <i class=""></i> SF ACTIVITY
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="SDTConcept" asp-action="Sdt_concept_view">
+                                <i class=""></i> SF CONCEPT
+
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="SFogz" asp-action="Sfogz_view">
+                                <i class=""></i> SF ORGANIZATION
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <nav class="secondary">
+            <ul>
+                <li><a asp-controller="" asp-action="">Sign In</a></li>
+                <li><a asp-controller="SFProject" asp-action="Site_map_view">Site Map</a></li>
+                <li><a asp-controller="SFProject" asp-action="Home_page_menu_view">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+

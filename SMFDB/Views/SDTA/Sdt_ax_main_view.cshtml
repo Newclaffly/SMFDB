@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Sdt_ax_main_view";
+}
+<script src="~/lib/image-map-resizer/js/imageMapResizer.js"></script>
+@*<script src="~/lib/image-map-resizer/gruntfile.js"></script>*@
+
+<section id="contact" class="contact">
+    <div class="container-fluid" data-aos="zoom-out">
+        <div class="h-100">
+            <div class="py-0 px-5">
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active ">
+                            <div class="row align-items-center justify-content-center">
+                                <div class="col-12 text-center opacity-85">
+                                    <img src="~/img/SDTA_LAYOUT.PNG" width="100%" alt="Workplace" usemap="#m_usaMap" id="a_layout_map" />
+                                    <map name="m_usaMap">
+                                        <area shape="rect" coords="1026,324,1250,558" alt="A9_1" href="@Url.Action("Main_audit_anine_view", "Anine")" asp-action="Main_audit_anine_view" asp-controller="Anine">
+                                    </map>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@*<form name="edit_instant">
+        <div id="edit_instants_now"></div>
+        <div id="edit_instants_click"></div>
+        <input name="edit_instant_x">
+        <input name="edit_instant_y">
+    </form>*@
+<script>
+
+
+    //var naturalWidth = 85;
+    //$('#a_layout_map').mousemove(function(event) {
+    //    var img = $('#a_layout_map');
+    //  console.log(naturalWidth);
+    //  ratio = naturalWidth / img.width();
+    //  window.current_x = (event.pageX - img.offset().left) * ratio;
+    //  window.current_y = (event.pageY - img.offset().top) * ratio;
+    //  window.current_coords = window.current_x + ', ' + window.current_y;
+    //  $('#edit_instants_now').html('Current position: ' + window.current_coords + '.');
+    //}).mouseleave(function () {
+    //  $('#edit_instants_now').html('&nbsp;');
+    //}).click(function() {
+    //   // $('#edit_instants_click').html('Last click: ' + window.current_coords + '. ');
+    //    console.log('Last click: ' + window.current_coords + '. ');
+    //  document.edit_instant.edit_instant_x.value = window.current_x;
+    //  document.edit_instant.edit_instant_y.value = window.current_y;
+    //});
+
+    //$('img').on('load', function(e) {
+    //  naturalWidth = e.target.naturalWidth;
+    //})
+    $(document).ready(function () {
+        $('map').imageMapResize();
+
+        $('#a_layout_map').click(function (e) {
+            var offset = $(this).offset();
+            var X = (e.pageX - offset.left);
+            var Y = (e.pageY - offset.top);
+            //$('#coord').text('X: ' + X + ', Y: ' + Y);
+            console.log('X: ' + X + ', Y: ' + Y);
+        });
+    });
+</script>

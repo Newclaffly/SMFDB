@@ -1,0 +1,362 @@
+﻿
+@{
+    ViewBag.Title = "Sdt_porject_view";
+}
+<style>
+    .actived_css {
+        background-color: #20c997;
+        color: #ffffff;
+    }
+
+    .topic_blue {
+        background-color: #354bb9 !important;
+        color: white;
+    }
+</style>
+
+<div id="app1">
+    <div class="col-sm-12">
+        <div class="section-title" data-aos="fade-up">
+            <h3>SDT SMART FACTORY <span>PROJECT</span></h3>
+        </div>
+        <div class="row" data-aos="fade-right">
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Search</label>
+                            <input type="text" id="search-box" class="form-control" placeholder="Search keyword">
+                        </div>
+                        @*DropDown Biz*@
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Biz</label>
+                            <select class="form-select" id="biz" v-model="selectedCategoryId">
+                                <option selected>All</option>
+                                <option value="IS">IS</option>
+                                <option value="HTPS">HTPS</option>
+                                <option value="M-OLED">M-OLED</option>
+                                <option value="S-MOLED">S-MOLED</option>
+                                <option value="LSI">LSI</option>
+                                <option value="FFP">FFP</option>
+                                <option value="BMS-MOLD">BMS-MOLD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="card">
+                    <div class="card-body shadow">
+                        <label class="mb-2 mt-1 form-label text-muted biz-wrap">Category</label>
+                        <div class="d-flex flex-column">
+                            <div class="row align-items-end mb-1 text-center" id="options">
+                                <template v-for="(item, index) in distinct_test">
+                                    <div class="col-3" v-if="item != ''">
+                                        <div class="d-flex flex-row justify-content-start align-items-center mb-2 box-fillter-head">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio"
+                                                       v-model="selectedCategoryId"
+                                                       :value="item"
+                                                       v-bind:id="item"
+                                                       v-bind:key="item">
+
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    {{item}}
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </template>
+                                <button v-on:click="selectedCategoryId = '' ">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-aos="fade-up">
+            <div class="col-sm-12">
+                <div class="d-flex flex-row justify-content-between align-items-center mb-3">
+                    <h4>COVERAGE</h4>
+                </div>
+            </div>
+        </div>
+        <template v-for="(item, index) in Status_list_coverpage">
+            <div v-bind:class="item.Job_Name">
+                <div class="row" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <div class="col-sm-12">
+                        <div class="py-2 ps-4 mb-0 box-fillter topic_blue bg-opacity-25 data">
+                            <label class="head" v-bind:id="item.Job_Name">{{item.Job_Name}}</label>
+                            <div class="row align-items-center py-2 m-0">
+                                <div class="col-sm-3 ps-4 ">
+                                    <small class="" style="color:white;">Project</small>
+                                </div>
+                                <div class="col-sm-2 text-center" style="color:white;">
+                                    <small class="">Status</small>
+                                </div>
+
+                                <div class="col-sm-6 text-center" style="color:white;">
+                                    <small class="">Coverage</small>
+                                </div>
+
+                                <div class="col-sm-1 text-center" style="color:white;">
+                                    <small class=""></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <template v-for="(items, index) in Status_list" v-if="item.Job_Name == items.Job_Name">
+                            <div class="row align-items-center py-2 mb-2 box-fillter m-0 shadow mt-2 data-de" v-bind:id="items.Job_Name">
+                                <div class="col-sm-3 ps-4">
+                                    <label class="fw-bold top-0 text-black-50" style="font-size:18px;"> SF No.{{items.SF_No}} | {{items.Project_Name}}</label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="d-flex flex-row justify-content-center">
+                                        <small class="text-muted pe-2">{{items.FY}}</small>
+                                        <div v-if="items.Status == 'Go live'">
+                                            <small class="badge rounded-pill bg-success">Go live</small>
+                                        </div>
+                                        <div v-else-if="items.Status == 'InProgress'">
+                                            <small class="badge rounded-pill bg-primary">InProgress</small>
+                                        </div>
+                                        <div v-else>
+                                            <small class="badge rounded-pill bg-secondary">Incomming</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex col-sm-6">
+                                    <template v-for="(i, index) in list_biz_render" v-if="items.SF_No == i.SF_No">
+                                        <div class="d-flex flex-row justify-content-center text-center">
+                                            <div v-if="i.TB_IS == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">IS</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">IS</span>
+                                            </div>
+                                            <div v-if="i.HTPS == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">HTPS</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">HTPS</span>
+                                            </div>
+                                            <div v-if="i.MOLED == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">MOLED</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">MOLED</span>
+                                            </div>
+                                            <div v-if="i.SMOLED == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">SMOLED</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">SMOLED</span>
+                                            </div>
+                                            <div v-if="i.LSI == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">LSI</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">LSI</span>
+                                            </div>
+                                            <div v-if="i.FFP == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">FFP</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">FFP</span>
+                                            </div>
+                                            <div v-if="i.TBBM == '0'">
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz text-muted">BMS-MOLD</span>
+                                            </div>
+                                            <div v-else>
+                                                <span class="px-3 py-2 fs-6 mx-1 box-biz activez">BMS-MOLD</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <div class="col-sm-1 ">
+                                    <div class="d-flex flex-row align-items-center float-end">
+                                        <button type="button" v-on:click="LinkPage(items.SF_No)" class="btn-icon pe-5 bi bi-arrow-right-circle-fill fs-4 text-black-50"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app1 = new Vue({
+        el: '#app1',
+        data() {
+            return {
+                list_job_concern: [],
+                list_project_cover_page: [],
+                list_biz_mst: [],
+                list_biz_render: [],
+                selectedCategoryId: '',
+                selectBiz: '',
+            }
+        },
+        created: function () {
+            this.get_list_project_cover_page(),
+                this.get_list_biz_mst(),
+                this.get_list_render_mst()
+        },
+        methods: {
+            get_list_biz_mst() {
+                axios
+                    .post('./mst_biz_view')
+                    .then(res => { this.list_biz_mst = res.data })
+                    .catch(function (error) { console.log(error); })
+            },
+            get_list_render_mst() {
+                axios
+                    .post('./get_vew_porject_list')
+                    .then(res => { this.list_biz_render = res.data })
+                    .catch(function (error) { console.log(error); })
+            },
+            get_list_project_cover_page() {
+                axios
+                    .post('./get_vew_porject')
+                    .then(res => {
+                        let detail_project = []
+                        res.data.forEach((a) => {
+                            detail_project.push({
+                                SF_No: a.SF_No,
+                                FY: a.FY,
+                                Group: a.Group,
+                                Job_Name: a.Job_Name,
+                                Project_Name: a.Project_Name,
+                                Status: a.Status,
+                                Biz: JSON.parse(a.Biz)
+                            })
+                        })
+                        this.list_project_cover_page = detail_project
+                    })
+                    .catch(function (error) { console.log(error); })
+            },
+
+            LinkPage(param) {
+                window.location.href = ('../SFProject/Detail_project_view?apply_id=' + param + '')
+            },
+            filterCategory: function (val) {
+                return val.filter(a => !a.Job_Name.indexOf(this.selectedCategoryId))
+            },
+            filterBiz: function (val) {
+                return val.filter(a => !a.Biz.indexOf(this.selectedCategoryId))
+            },
+            //test2() {
+            //    var sf_value = this.list_project_cover_page.filter(a => a.SF_No == sf_no)
+            //    //console.log(sf_value);
+            //    return this.list_project_cover_page.filter(a => a.SF_No == sf_no)
+            //},
+            //GetDistinctBiz: function (val) {
+            //    return this.list_project_cover_page.map(a => a.Biz)
+            //},
+            //class_biz(biz, sf_no) {
+            //    //console.log(sf_no);
+            //    var sf_value = this.list_project_cover_page.filter(a => a.SF_No == sf_no)
+            //   // console.log(this.list_project_cover_page)
+
+            //    var sf_value_phase = sf_value.map(a => a).toString();
+            //   // console.log(sf_value_phase);
+            //    //let detail_project = []
+            //    //var sf_value_obj = sf_value.forEach((a) => {
+            //    //    detail_project.push({
+            //    //        Biz: a.Biz
+            //    //    })
+
+            //    //    // let biz_balue = sf_value.map()
+            //    //})
+            ////    console.log(sf_value[0].Biz[0].Biz);
+            //},
+        },
+        computed: {
+            Status_list: function () {
+                return ((this.filterCategory(this.list_project_cover_page)))
+            },
+            Status_list_coverpage: function () {
+                return ((this.filterCategory(this.radio_data)))
+            },
+            distinct_test() {
+                var data = [...new Set(this.list_project_cover_page.map(a => a.Job_Name).sort())]
+                return data
+            },
+            getCols() {
+                const result = Object.keys(Object.assign({}, ...this.list_project_cover_page))
+                return result
+            },
+            radio_data() {
+                let coverage = []
+                var data = [...new Set(this.list_project_cover_page.map(a => a.Job_Name).sort())]
+                data.forEach((a) => {
+                    coverage.push({
+                        Job_Name: a
+                    })
+                })
+                //console.log(coverage)
+                return coverage
+            },
+            //test() {
+            //    var value = this.list_project_cover_page.map(a => ({SF_No: a.SF_No,Biz: a.Biz }))
+            //    console.log(value);
+            //    return value
+            //    //return value
+            //    //let coverage = []
+            //    //var data = [...new Set(this.list_project_cover_page.map(a => new Object({SF_No: a.SF_No,Biz: a.Biz}) ).sort())]
+            //    //data.forEach((a) => {
+            //    //    coverage.push({
+            //    //        SF_No: a,
+            //    //        Biz: a
+            //    //    })
+            //    //})
+            //    //console.log(coverage)
+            //    //return coverage
+            //   /*  var sf_value = this.list_project_cover_page.filter(a => a.SF_No == '1')*/
+            //    //console.log(sf_value);
+            //    //return this.list_project_cover_page.filter(a => a.SF_No == sf_no)
+            //},
+        },    
+       
+    })
+    $(document).ready(function () {
+        $("#search-box").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            if (!$(this).val()) {
+                $(".data, .data-de ").removeAttr('style');
+            } else {
+                $(".data, .data-de").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            }
+        });
+
+        ///*Search CheckBox Category*/
+        //$('.biz-wrap, .head').delegate('input[type=checkbox]', 'change', function () {
+        //    var $lis = $(".data"),
+        //        $checked = $('input:checked');
+        //    if ($checked.length) {
+        //        var selector = '';
+        //        $($checked).each(function (index, element) {
+        //            if (selector === '') {
+        //                selector += "[data-category~='" + element.value + "']";
+        //            } else {
+        //                selector += ",[data-category~='" + element.value + "']";
+        //            }
+        //        });
+        //        $lis.hide();
+        //        //console.log(selector);
+        //        $(".data").hide().filter(selector).show();
+        //    } else {
+        //        $lis.show();
+        //    }
+        //});
+
+
+    });
+</script>

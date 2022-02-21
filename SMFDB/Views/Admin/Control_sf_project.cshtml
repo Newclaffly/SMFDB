@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Control_sf_project";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="app1">
+    <form asp-action="Add_file_upload_sf_project"
+          asp-controller="Admin"
+          method="post"
+          enctype="multipart/form-data">
+        <section class="forms">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-close">
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">File Upload</h3>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Upload sfile Presentation for (SF Project)</h5>
+                                <p class="card-text">Please select SF Project number for upload file only .pdf</p>
+                                <template>
+                                    <select class="form-select form-select-lg mb-3" v-on:change="SFNo_onChange($event)" aria-label=".form-select-lg example" v-model="key">
+                                        <option value="" selected>--- Select SF Project number ---</option>
+                                        <option v-for="options in list_sf_project_option" v-bind:value="options.SF_No">
+                                            SF NO : {{ options.SF_No }} | {{ options.Project_Name}}
+                                        </option>
+                                    </select>
+                                </template>
+                                <br />
+                                <div class="form-group">
+                                    <input id="files" type="file" name="file_pdf" class="form-control-file">
+                                </div>
+                                <div class="form-group">
+                                    <input id="topic" type="hidden" name="topic_sf" class="form-control">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <input type="submit" class="btn btn-primary">
+                                </div>
+                                <div id="divloader" style="display:none">
+                                    @*<img src="~/img/photos/64x64.gif" />*@
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+
+<script>
+    var app1 = new Vue({
+        el: '#app1',
+        data() {
+            return {
+                //list_job_concern: [],
+                list_sf_project_option: [],
+                key: ""
+            }
+        },
+        created: function () {
+            //this.get_list_job_concern(),
+            this.get_option_sf_project()
+        //    this.set_project_number()
+        },
+        methods: {
+            get_option_sf_project(event) {
+                axios
+                    //.post('./get_list_option_sf_project', { param1: param_id })
+                    .post('./get_list_option_sf_project')
+                    .then(res => { this.list_sf_project_option = res.data })
+                    .catch(function (error) { console.log(error); })
+            },
+            SFNo_onChange(event) {
+                //console.log(event.target.value);
+                let param_sf_no = event.target.value;
+                $('#topic').val(param_sf_no);
+                console.log(param_sf_no);
+
+            },
+            //set_project_number() {
+            //    //var sf_no = this.selected.sf_no
+            //    //console.log(sf_no);
+            //},
+            //get_list_detail_project() {
+            //    //console.log(param_id);
+            //    axios
+            //        .post('./get_project_detail', { apply_id: '20' })
+            //        .then(res => { this.list_detail_project = res.data })
+            //        .catch(function (error) { console.log(error); })
+            //},
+            //get_list_project_cover_page() {
+            //    axios
+            //        .post('./get_vew_porject')
+            //        .then(res => { this.list_project_cover_page = res.data })
+            //        .catch(function (error) { console.log(error); })
+            //},
+            //LinkPage(param) {
+            //    //console.log(param);
+            //    window.location.href = ('../SFProject/Detail_project_view?apply_id=' + param + '')
+            //},
+        }
+    })
+    //$(document).ready(function () {
+
+    //});
+</script>

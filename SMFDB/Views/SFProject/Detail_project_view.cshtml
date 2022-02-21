@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "Detail_project_view";
+}
+<style>
+    canvas {
+        border: 1px solid black;
+        padding: 0;
+        margin: auto;
+        margin-left: 8px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        /*display: block;*/
+        width: 600px;
+    }
+</style>
+<div id="app1">
+    <div class="col-sm-12">
+        <div class="main-wrapper">
+            <div class="main-content">
+                <section id="hero" class="d-flex align-items-center" v-for="(items, index) in list_detail_project">
+                    <div class="row" data-aos="zoom-out" data-aos-delay="100">
+                        <div col-4>
+                            <h1>
+                                SF No.{{items.SF_No}} <span>{{items.Project_Name}}</span>
+                                <label class="badge rounded-pill bg-success ms-2" style="font-size: 12px; position: relative; top:-5px;">{{items.Status}}</label>
+                            </h1>
+                        </div>
+                        <div col-4>
+                            <div class="d-flex">
+                                <a href="" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="about" class="about" v-for="(items, index) in list_detail_project">
+                    <div class="row ps-4">
+                        <p><span class="text-muted">Description : </span>{{items.To_Do}}</p>
+                        <div class="col-lg-12 pt-4 pt-lg-0 content d-flex flex-row justify-content-start details " data-aos="fade-up" data-aos-delay="100">
+                            <div class="me-4">
+                                <p><span class="text-muted">Year : </span>{{items.FY}}</p>
+                            </div>
+
+                            <div class="me-4">
+                                <p><span class="text-muted">Group : </span>{{items.Group}}</p>
+                            </div>
+
+                            <div class="me-4">
+                                <p><span class="text-muted">Dev : </span>{{items.Dev_Name}}</p>
+                            </div>
+
+                            <div class="me-4">
+                                <p><span class="text-muted">Incharge : </span>{{items.Incharge}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="portfolio-flters" class="team section-bg">
+                    <div class="d-flex flex-row justify-content-end align-items-center mb-0">
+                        <div>
+                            <button class="btn fs-2" onclick="partion_page()"><i class="bi bi-grid"></i></button>
+                            <button class="btn fs-2" onclick="full_page()"><i class="bi bi-square"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="row " id="section1">
+                        <div class="container" id="section1">
+                            <div class="container" data-aos="fade-up">
+                                <div class="col-lg-12 col-md-12 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                                    <div id="canvas" class="img-fluid"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/pdfjs/pdf.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    let param_id = '@ViewBag.apply_id';
+  //  console.log(param_id);
+
+    var app1 = new Vue({
+        el: '#app1',
+        data() {
+            return {
+                //list_job_concern: [],
+                list_detail_project: [],
+                
+            }
+        },
+        created: function () {
+            //this.get_list_job_concern(),
+            this.get_list_detail_project(),
+                this.get_test()
+        },
+        methods: {
+            get_list_detail_project() {
+                axios
+                    .post('./get_project_detail', { param1: param_id })
+                    .then(res => { this.list_detail_project = res.data })
+                    .catch(function (error) { console.log(error); })
+            },
+            get_test() {
+                // If absolute URL from the remote server is provided, configure the CORS
+                // header on that server.
+                var url = '../PDF/SF_PROJECT/PROJECT/' + param_id+'.pdf';
+                // Loaded via <script> tag, create shortcut to access PDF.js exports.
+                var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // The workerSrc property shall be specified.
+                pdfjsLib.GlobalWorkerOptions.workerSrc = '../lib/pdfjs/pdf.worker.js';
+                // Asynchronous download of PDF
+                var loadingTask = pdfjsLib.getDocument(url);
+                loadingTask.promise.then(function (pdf) {
+                    var canvasdiv = document.getElementById('canvas');
+                    var totalPages = pdf.numPages
+                    var data = [];
+                    for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                        pdf.getPage(pageNumber).then(function (page) {
+                            var scale = 2;
+                            // var scale = window.devicePixelRatio || 1;
+                            // canvasdiv.className = 'filter';
+                            var viewport = page.getViewport({ scale: scale });
+                            // const para = document.createElement("p");
+                            var canvas = document.createElement('canvas');
+                            canvasdiv.appendChild(canvas).className = "render_page";
+                            // Prepare canvas using PDF page dimensions
+                            var context = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            // Render PDF page into canvas context
+                            var renderContext = { canvasContext: context, viewport: viewport };
+                            var renderTask = page.render(renderContext);
+                            renderTask.promise.then(function () {
+                                data.push(canvas.toDataURL('image/png'))
+                                console.log(data.length + ' page(s) loaded in data')
+                            });
+                        });
+                    }
+
+                }, function (reason) {
+                    // PDF loading error
+                    console.error(reason);
+                });
+            }
+            //get_list_detail_project() {
+            //    //console.log(param_id);
+            //    axios
+            //        .post('./get_project_detail', { apply_id: '20' })
+            //        .then(res => { this.list_detail_project = res.data })
+            //        .catch(function (error) { console.log(error); })
+            //},
+            //get_list_project_cover_page() {
+            //    axios
+            //        .post('./get_vew_porject')
+            //        .then(res => { this.list_project_cover_page = res.data })
+            //        .catch(function (error) { console.log(error); })
+            //},
+            //LinkPage(param) {
+            //    //console.log(param);
+            //    window.location.href = ('../SFProject/Detail_project_view?apply_id=' + param + '')
+            //},
+        }
+    })
+    //$(document).ready(function () {
+    //   // render_audit_first();
+    //    function render_audit_first() {
+    //        // If absolute URL from the remote server is provided, configure the CORS
+    //        // header on that server.
+    //        var url = '../PDF/SF_PROJECT/PROJECT/.pdf';
+    //        // Loaded via <script> tag, create shortcut to access PDF.js exports.
+    //        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+    //        // The workerSrc property shall be specified.
+    //        pdfjsLib.GlobalWorkerOptions.workerSrc = '../lib/pdfjs/pdf.worker.js';
+    //        // Asynchronous download of PDF
+    //        var loadingTask = pdfjsLib.getDocument(url);
+    //        loadingTask.promise.then(function (pdf) {
+    //            var canvasdiv = document.getElementById('canvas');
+    //            var totalPages = pdf.numPages
+    //            var data = [];
+    //            for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+    //                pdf.getPage(pageNumber).then(function (page) {
+    //                    var scale = 2;
+    //                    // var scale = window.devicePixelRatio || 1;
+    //                    // canvasdiv.className = 'filter';
+    //                    var viewport = page.getViewport({ scale: scale });
+    //                    // const para = document.createElement("p");
+    //                    var canvas = document.createElement('canvas');
+    //                    canvasdiv.appendChild(canvas).className = "render_page";
+    //                    // Prepare canvas using PDF page dimensions
+    //                    var context = canvas.getContext('2d');
+    //                    canvas.height = viewport.height;
+    //                    canvas.width = viewport.width;
+    //                    // Render PDF page into canvas context
+    //                    var renderContext = { canvasContext: context, viewport: viewport };
+    //                    var renderTask = page.render(renderContext);
+    //                    renderTask.promise.then(function () {
+    //                        data.push(canvas.toDataURL('image/png'))
+    //                        console.log(data.length + ' page(s) loaded in data')
+    //                    });
+    //                });
+    //            }
+
+    //        }, function (reason) {
+    //            // PDF loading error
+    //            console.error(reason);
+    //        });
+    //    }
+    //});
+
+    function full_page() {
+        $('.render_page').css('width', '100%');
+    }
+
+    function partion_page() {
+        $('.render_page').css('width', '600px');
+    }
+</script>

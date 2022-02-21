@@ -1,0 +1,280 @@
+﻿html,
+body {
+    height: 100%;
+    background-color: #ffffff;
+}
+
+
+.a-withe{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.a-black {
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+.shadow {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}
+
+a .icon-box-media{
+    display: block;
+    width: 3rem;
+    min-width: 3rem;
+    height: 3rem;
+    border-radius: .5rem;
+    background-position: center;
+    background-size: cover;
+    font-size: 1.5rem;
+    line-height: 2.75rem;
+    text-align: center;
+    color: #0d6efd;
+    background-color: rgba(13,110,253,.1);
+}
+
+a .icon-box-media:hover {
+    color: #f7f7f7;
+    background-color: #0d6efd;
+}
+
+.bg-faded-primary {
+    background-color: rgba(13,110,253,.1) !important;
+}
+/* ---- Header Nav bar ----*/
+.navbox {
+    z-index: 1;
+}
+
+.top-navbar{
+    display: flex;
+    flex-direction: column
+}
+
+.nav-masthead .nav-link {
+    position: relative;
+    bottom: -.25rem;
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+    opacity: 0.5;
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+     border-bottom-color: black;
+     opacity: 0.5;
+}
+
+.nav-masthead .nav-link + .nav-link {
+    margin-left: 0.1rem;
+}
+
+
+.nav-masthead .active {
+    color: black;
+    opacity: 1;
+    border-bottom-color: black;
+}
+
+#row2{
+    display:none;
+}
+
+
+
+
+
+#pic-1{
+    position: absolute;
+    top: 20px;
+    left: 190px;
+}
+
+#text-1 {
+    position: relative;
+    top: 0px;
+    left: 30px;
+    color: black;
+}
+
+#FY{
+    position: relative;
+    right: -20px;
+}
+
+.non-a{
+    color: black;
+    text-decoration:none;
+}
+
+.non-a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+
+ 
+.box {
+    height: auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    color: black;
+    border: solid 0.5px #eeeeee;
+    border-radius: 10px;
+}
+
+.box-slide {
+    position:relative;
+    top: 40px;
+    height: auto;
+    background-color: #ffffff;
+    color: black;
+    border: solid 0.5px #eeeeee;
+    border-radius: 10px;
+}
+
+.box-b {
+    height: auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    color: black;
+    border: solid 4px #eeeeee;
+    border-radius: 10px;
+}
+
+.box-head {
+    height: auto;
+}
+
+    .box-head:hover {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        cursor: pointer;
+    }
+
+.box-active {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border: solid 1.2px #eeeeee;
+
+}
+
+.box-fillter {
+    height: auto;
+    background-color: #fefefe;
+    color: black;
+    border: solid 0.5px #eeeeee;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.box-fillter a{
+    color: black;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+.box-fillter-head {
+    height: auto;
+    background-color: transparent;
+    color: #212529;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+    .box-fillter-head:hover {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        opacity: 1;
+    }
+
+
+    .box-fillter-head a {
+        color: #ffffff;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+.box-biz {
+    height: auto;
+    background-color: #fefefe;
+    color: black;
+    border: solid 0.5px #eeeeee;
+    border-radius: 10px;
+}
+
+.active12 {
+    background-color: #20c997;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.active small {
+
+    color: #ffffff;
+
+}
+
+.activez {
+    background-color: #20c997;
+    color: #ffffff;
+    border: solid 0.5px #eeeeee;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+    .box-fillter:hover {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    }
+
+
+
+.btn-icon{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 650px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.texta {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.texta:hover {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    opacity:0.8;
+}
