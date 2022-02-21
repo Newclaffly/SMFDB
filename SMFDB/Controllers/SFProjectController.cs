@@ -99,6 +99,14 @@ namespace SMFDB.Controllers
             return data;
         }
 
+        [HttpPost]
+        public IActionResult get_data_news_annoucement()
+        {
+            var data = _con_sql._query("SELECT * FROM tbSF_News ");
+
+            //var data = _con_sql._query("select * from vew_Project where Job_Name is not null and Job_Name != 'YIELD'");
+            return data;
+        }
 
         // [HttpGet]
         // GET: Movies/Details/5

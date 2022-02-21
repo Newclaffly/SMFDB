@@ -17,7 +17,7 @@
         <div class="card-body">
             <h5 class="card-title">If you need to adding annoucement please click button "Add Announcement"</h5>
             <div class="table-responsive">
-                <button type="button" class="btn btn-sm btn-success" id="btn_add_news" data-bs-toggle="modal" data-bs-target="#modal_news_add">Add News</button>
+                <button type="button" class="btn btn-sm btn-success" id="btn_add_news" data-bs-toggle="modal" data-bs-target="#modal_news_add">Add Announcement</button>
                 <table class="table table-sm table-striped table-hover table-bordered text-center mt-2">
                     <thead>
                         <tr>
@@ -233,7 +233,7 @@
                         .post('./update_data_news', { param1: json,param2: flag_even})
                         .then(res => {
                             if (res.data == 'OK') {
-                                this.get_list_news_acc
+                                this.get_list_news_acc()
                                 console.log("data submit : True")
                             } else {
                                 console.log("data submit : False")
