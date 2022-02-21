@@ -233,6 +233,7 @@
                         .post('./update_data_news', { param1: json,param2: flag_even})
                         .then(res => {
                             if (res.data == 'OK') {
+                                this.get_list_news_acc
                                 console.log("data submit : True")
                             } else {
                                 console.log("data submit : False")
