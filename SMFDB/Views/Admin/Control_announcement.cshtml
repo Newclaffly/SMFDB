@@ -17,7 +17,7 @@
         <div class="card-body">
             <h5 class="card-title">If you need to adding annoucement please click button "Add Announcement"</h5>
             <div class="table-responsive">
-                <button type="button" class="btn btn-sm btn-success" id="btn_add_news" data-bs-toggle="modal" data-bs-target="#modal_news_add">Add Announcement</button>
+                <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#modal_news_add">Add Announcement</button>
                 <table class="table table-sm table-striped table-hover table-bordered text-center mt-2">
                     <thead>
                         <tr>
@@ -68,33 +68,35 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-sm-6 mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">
-                                    Topic (TH) <span class="star">*</span>
-                                </label>
-                                <input type="text" class="form-control" v-model="form_add.input_add_topic_th">
+                    <form ref="form_add_news">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">
+                                        Topic (TH) <span class="star">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" v-model="form_add.input_add_topic_th">
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Topic (ENG) <span class="star">*</span></label>
+                                    <input type="text" class="form-control" v-model="form_add.input_add_topic_eng">
+                                </div>
                             </div>
-                            <div class="col-sm-6 mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Topic (ENG) <span class="star">*</span></label>
-                                <input type="text" class="form-control" v-model="form_add.input_add_topic_eng">
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Linke Src</label>
+                                    <input type="text" class="form-control" placeholder="link page or website reference" v-model="form_add.input_add_link_src">
+                                </div>
+                                <input type="hidden" class="form-control" v-model="form_add.input_add_create_by">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <label for="formFile" class="form-label">File input</label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Linke Src</label>
-                                <input type="text" class="form-control" placeholder="link page or website reference" v-model="form_add.input_add_link_src">
-                            </div>
-                            <input type="hidden" class="form-control" v-model="form_add.input_add_create_by">
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 mb-3">
-                                <label for="formFile" class="form-label">File input</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -147,16 +149,16 @@
                                     <input type="text" class="form-control" v-model="form_edit.input_create_by" disabled>
                                 </div>
                                 <div class="col-sm-4 mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Last Date</label>
+                                    <label for="exampleFormControlTextarea1" class="form-label">Last update</label>
                                     <input type="text" class="form-control" v-model="form_edit.input_last_update" disabled>
                                 </div>
                                 @*<div class="col-sm-5 mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Status Topic</label>
-                                    <input type="text" class="form-control" v-model="form_edit.input_status_topic">
-                                </div>*@
+                                        <label for="exampleFormControlTextarea1" class="form-label">Status Topic</label>
+                                        <input type="text" class="form-control" v-model="form_edit.input_status_topic">
+                                    </div>*@
                             </div>
                         </form>
-                      
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -218,30 +220,9 @@
                 this.form_edit.input_status_topic = data.map(a => a.FLAG_NEWS).toString()
             },
             submit_edit() {
-                if (this.form_edit.TOPIC_POST_ENG != '' && this.form_edit.TOPIC_POST_TH != '') {
+                if (this.form_edit.input_topic_eng != '' && this.form_edit.input_topic_th != '') {
                     var json = JSON.stringify(this.form_edit);
                     var flag_even = 'edit_news'
-                    console.log(json)
-                    axios
-                        .post('./update_data_news', { param1: json,param2: flag_even})
-                        .then(res => {
-                            if (res.data == 'OK') {
-                                this.get_list_news_acc()
-                                console.log("data submit : True")
-                            } else {
-                                console.log("data submit : False")
-                            }
-                        })
-                        .catch(function (error) { console.log(error); })
-
-                } else {
-                    console.log("Incorrect submit")
-                }
-            },
-            submit_add() {
-                if (this.form_add.TOPIC_POST_ENG != '' && this.form_add.TOPIC_POST_TH != '') {
-                    var json = JSON.stringify(this.form_add);
-                    var flag_even = 'add_news'
                     console.log(json)
                     axios
                         .post('./update_data_news', { param1: json, param2: flag_even })
@@ -259,7 +240,54 @@
                     console.log("Incorrect submit")
                 }
             },
-
+            submit_add() {
+                Swal.fire({
+                    title: 'Do you want to save the changes?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Save',
+                    denyButtonText: `Don't save`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if (this.form_add.input_add_topic_eng != '' && this.form_add.input_add_topic_th != '') {
+                            var json = JSON.stringify(this.form_add);
+                            var flag_even = 'add_news'
+                            console.log(json)
+                            axios
+                                .post('./update_data_news', { param1: json, param2: flag_even })
+                                .then(res => {
+                                    if (res.data == 'OK') {
+                                        this.get_list_news_acc()
+                                        Swal.fire('Saved!', '', 'success')
+                                        this.clear_modal_add() //Clear value in modal add announcement
+                                        $('#modal_news_add').modal('hide')
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Saved Failed!'
+                                        })
+                                    }
+                                })
+                                .catch(function (error) { console.log(error); })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Please check value and fill data completly!'
+                            })
+                        }
+                    } else if (result.isDenied) {
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
+                })
+            },
+            clear_modal_add() {
+                this.form_add.input_add_topic_th = ''
+                this.form_add.input_add_topic_eng = ''
+                this.form_add.input_add_link_src = ''
+                this.form_add.input_add_create_by = ''
+            },
         },
         computed: {
 
