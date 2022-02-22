@@ -10,9 +10,11 @@
         .carousel-item img {
             height: 600px;
         }
+
     .black_color_btn {
         background-color: black !important;
     }
+
     table {
         overflow-y: scroll;
         height: 160px;
@@ -48,45 +50,31 @@
             <span class="sr-only">Next</span>
         </button>*@
 </div>
-
-<div class="col-sm-12 section-bg">
-    <div class="row mt-4">
-        <div class="col-sm-12" data-aos="fade-right">
-            <section id="" class="why-us section-bg">
-                <h3>Hot Topic</h3>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+<div id="hot_topic_annoucement">
+    <div class="col-sm-12 section-bg">
+        <div class="row mt-4">
+            <div class="col-sm-12" data-aos="fade-right">
+                <section class="why-us section-bg">
+                    <h3>Hot Topic</h3>
+                    <div class="row">
+                        <template v-for="(item_card,index) in list_news_acc_top_three">
+                            <div class="col-sm-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item_card.TOPIC_POST_ENG}}</h5>
+                                        <p class="card-text">{{item_card.DETAIL_ENG}}</p>
+                                        <a :href="item_card.LINK_SRC" class="btn btn-primary">See more</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </template>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
 </div>
+
 <div id="annoucement_component">
     <div class="col-sm-12">
         <div class="row mt-4">
@@ -98,7 +86,7 @@
                             <template v-for="(item_list_data_news,index) in list_news_acc">
                                 <tr>
                                     <td><img height="11" alt="" src="http://43.72.2.194/sdt/images/Bullet/bullet_arrow.gif" width="14"></td>
-                                    <td>{{item_list_data_news.DATE_POST}}</td>
+                                    <td>{{item_list_data_news.CREATE_DATE}}</td>
                                     <td><a :href="item_list_data_news.LINK_SRC">{{item_list_data_news.TOPIC_POST_ENG}}</a></td>
                                     <td><img src="http://43.72.2.194/sdt/images/bullet/new.gif" alt="news"></td>
                                 </tr>
@@ -206,22 +194,47 @@
 <!-- End Footer -->
 
 <script>
-    var app1 = new Vue({
+    var table_news = new Vue({
         el: '#annoucement_component',
         data() {
             return {
-                list_news_acc: [],
+                list_news_acc: []
             }
         },
         created: function () {
             this.get_list_news_acc()
-
         },
         methods: {
             get_list_news_acc() {
                 axios
                     .post('./get_data_news_annoucement')
                     .then(res => { this.list_news_acc = res.data })
+                    .catch(function (error) { console.log(error); })
+            },
+        },
+        computed: {
+
+        },
+        watch: {
+
+        },
+    })
+
+    var hot_topic = new Vue({
+        el: '#hot_topic_annoucement',
+        data() {
+            return {
+                list_news_acc_top_three: [],
+            }
+        },
+        created: function () {
+                this.get_list_news_acc_top_three()
+        },
+        methods: {
+          get_list_news_acc_top_three() {
+                axios
+                    .post('./get_data_news_annoucement_top_three')
+                    .then(res => { this.list_news_acc_top_three = res.data })
                     .catch(function (error) { console.log(error); })
             },
 
