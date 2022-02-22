@@ -60,6 +60,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="modal_news_add" tabindex="-1" aria-labelledby="modal_new_detail" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -220,33 +221,63 @@
                 this.form_edit.input_status_topic = data.map(a => a.FLAG_NEWS).toString()
             },
             submit_edit() {
-                if (this.form_edit.input_topic_eng != '' && this.form_edit.input_topic_th != '') {
-                    var json = JSON.stringify(this.form_edit);
-                    var flag_even = 'edit_news'
-                    console.log(json)
-                    axios
-                        .post('./update_data_news', { param1: json, param2: flag_even })
-                        .then(res => {
-                            if (res.data == 'OK') {
-                                this.get_list_news_acc()
-                                console.log("data submit : True")
-                            } else {
-                                console.log("data submit : False")
-                            }
-                        })
-                        .catch(function (error) { console.log(error); })
+                Swal.fire({
+                    title: 'Do you want to edit the annoucement?',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Save change',
+                    denyButtonText: `Don't save change`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if (this.form_edit.input_topic_eng != '' && this.form_edit.input_topic_th != '') {
+                            var json = JSON.stringify(this.form_edit);
+                            var flag_even = 'edit_news'
+                            console.log(json)
+                            axios
+                                .post('./update_data_news', { param1: json, param2: flag_even })
+                                .then(res => {
+                                    if (res.data == 'OK') {
+                                        this.get_list_news_acc()
+                                        Swal.fire('Save change Sucess!', '', 'success')
+                                        this.clear_modal_edit() //Clear value in modal edit announcement
+                                        $('#modal_news_edit').modal('hide')
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Save change Failed!'
+                                        })
+                                    }
+                                })
+                                .catch(function (error) { console.log(error); })
 
-                } else {
-                    console.log("Incorrect submit")
-                }
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Please check value and fill data completly!'
+                            })                        }
+                    } else if (result.isDenied) {
+                        Swal.fire('Data are not save change', '', 'info')
+                    }
+                })
+            },
+            clear_modal_edit() {
+                this.form_edit.input_no = ''
+                this.form_edit.input_topic_th = ''
+                this.form_edit.input_topic_eng = ''
+                this.form_edit.input_link_src = ''
+                this.form_edit.input_create_by = ''
+                this.form_edit.input_last_update = ''
+                this.form_edit.input_status_topic = ''
             },
             submit_add() {
                 Swal.fire({
-                    title: 'Do you want to save the changes?',
+                    title: 'Do you want to add the annoucement?',
                     showDenyButton: true,
                     showCancelButton: false,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
+                    confirmButtonText: 'Submit',
+                    denyButtonText: `Don't submit`,
                 }).then((result) => {
                     if (result.isConfirmed) {
                         if (this.form_add.input_add_topic_eng != '' && this.form_add.input_add_topic_th != '') {
@@ -258,14 +289,14 @@
                                 .then(res => {
                                     if (res.data == 'OK') {
                                         this.get_list_news_acc()
-                                        Swal.fire('Saved!', '', 'success')
+                                        Swal.fire('Submit Sucess!', '', 'success')
                                         this.clear_modal_add() //Clear value in modal add announcement
                                         $('#modal_news_add').modal('hide')
                                     } else {
                                         Swal.fire({
                                             icon: 'error',
                                             title: 'Oops...',
-                                            text: 'Saved Failed!'
+                                            text: 'Submit Failed!'
                                         })
                                     }
                                 })
@@ -278,7 +309,7 @@
                             })
                         }
                     } else if (result.isDenied) {
-                        Swal.fire('Changes are not saved', '', 'info')
+                        Swal.fire('Data are not submit', '', 'info')
                     }
                 })
             },
