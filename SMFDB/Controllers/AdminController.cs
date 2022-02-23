@@ -161,6 +161,7 @@ namespace SMFDB.Controllers
         public IActionResult Add_file_upload_sf_project(IFormFile file_pdf ,string topic_sf)
         {
             Uploadfile tbl_News = new Uploadfile();
+            var result_upload = "";
             if (file_pdf != null)
             {
 
@@ -176,8 +177,10 @@ namespace SMFDB.Controllers
                 {
                     file_pdf.CopyTo(stream);
                 }
+                result_upload = "Sucess";
             }
-            return View("~/Views/Admin/Admin_panel_main_view.cshtml"); ;
+            //return View("~/Views/Admin/Admin_panel_main_view.cshtml"); 
+            return Ok(result_upload);
         }
 
         [HttpPost]
