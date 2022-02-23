@@ -158,10 +158,10 @@ namespace SMFDB.Controllers
 
         /*  Upload file SF Project */
         [HttpPost]
-        public IActionResult Add_file_upload_sf_project(IFormFile file_pdf ,string topic_sf)
+        public IActionResult add_file_upload_sf_project(IFormFile file_pdf, string topic_sf)
         {
             Uploadfile tbl_News = new Uploadfile();
-            var result_upload = "";
+            //var result_upload = "";
             if (file_pdf != null)
             {
 
@@ -175,12 +175,20 @@ namespace SMFDB.Controllers
 
                 using (var stream = new FileStream(SavePath, FileMode.Create))
                 {
+                    //await files.CopyToAsync(stream);
+
                     file_pdf.CopyTo(stream);
                 }
-                result_upload = "Sucess";
+            }
+            else
+            {
+                //result_upload = "File Null";
+
             }
             //return View("~/Views/Admin/Admin_panel_main_view.cshtml"); 
-            return Ok(result_upload);
+            //return Content(result_upload);
+            return RedirectToAction("~/Views/Admin/Admin_panel_main_view.cshtml");
+            //return Ok(result_upload);
         }
 
         [HttpPost]
