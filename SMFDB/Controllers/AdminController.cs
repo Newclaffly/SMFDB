@@ -41,20 +41,24 @@ namespace SMFDB.Controllers
         /* View */
         public IActionResult Control_sdt_anine_audit_customer_quality()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
         public IActionResult Control_sdt_anine_audit_first_view()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
         public IActionResult Control_sdt_anine_audit_second_view()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
         public IActionResult Control_sdt_anine_audit_third_view()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
 
@@ -79,6 +83,11 @@ namespace SMFDB.Controllers
                 {
                     file_pdf.CopyTo(stream);
                 }
+                TempData["Message"] = "OK";
+            }
+            else
+            {
+                TempData["Message"] = "NOT_OK";
             }
             // View("~/Views/Admin/Control_sdt_anine_audit_customer_quality.cshtml"); 
             return RedirectToAction("Control_sdt_anine_audit_customer_quality", "Admin");
@@ -103,6 +112,11 @@ namespace SMFDB.Controllers
                 {
                     file_pdf.CopyTo(stream);
                 }
+                TempData["Message"] = "OK";
+            }
+            else
+            {
+                TempData["Message"] = "NOT_OK";
             }
             //return View("~/Views/Admin/Control_sdt_anine_audit_first_view.cshtml"); 
             return RedirectToAction("Control_sdt_anine_audit_first_view", "Admin");
@@ -126,6 +140,11 @@ namespace SMFDB.Controllers
                 {
                     file_pdf.CopyTo(stream);
                 }
+                TempData["Message"] = "OK";
+            }
+            else
+            {
+                TempData["Message"] = "NOT_OK";
             }
             //return View("~/Views/Admin/Control_sdt_anine_audit_second_view.cshtml");
             return RedirectToAction("Control_sdt_anine_audit_second_view", "Admin");
@@ -150,8 +169,15 @@ namespace SMFDB.Controllers
                 {
                     file_pdf.CopyTo(stream);
                 }
+                TempData["Message"] = "OK";
             }
-            return View("~/Views/Admin/Control_sdt_anine_audit_third_view.cshtml"); 
+            else
+            {
+                TempData["Message"] = "NOT_OK";
+            }
+            //return View("~/Views/Admin/Control_sdt_anine_audit_third_view.cshtml"); 
+            return RedirectToAction("Control_sdt_anine_audit_third_view", "Admin");
+
         }
 
         [HttpPost]
