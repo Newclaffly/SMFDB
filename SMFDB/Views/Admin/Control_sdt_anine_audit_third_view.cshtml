@@ -2,6 +2,20 @@
     ViewData["Title"] = "Control_sdt_anine_audit_third_view";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@if (ViewBag.Message == "OK")
+{
+    <div class="alert alert-success alert-dismissible" style="margin-top:20px">
+        File successfully uploaded to File System.
+        @*@ViewBag.Message*@
+    </div>
+}
+else if (ViewBag.Message == "NOT_OK")
+{
+    <div class="alert alert-danger alert-dismissible" style="margin-top:20px">
+        File failed uploaded to File System.
+        @*@ViewBag.Message*@
+    </div>
+}
 <form asp-action="Add_file_upload_autdit_anine_audit_third"
       asp-controller="Admin"
       method="post"
@@ -45,7 +59,4 @@
 </form>
 
 <script>
-    $(document).ready(function () {
-
-    });
 </script>

@@ -4,17 +4,17 @@
 }
 @if (ViewBag.Message == "OK")
 {
-    <div class="alert alert-success alert-dismissible" style="margin-top:20px">
-        File successfully uploaded to File System.
-        @*@ViewBag.Message*@
-    </div>
+<div class="alert alert-success alert-dismissible" style="margin-top:20px">
+    File successfully uploaded to File System.
+    @*@ViewBag.Message*@
+</div>
 }
 else if (ViewBag.Message == "NOT_OK")
 {
-    <div class="alert alert-danger alert-dismissible" style="margin-top:20px">
-        File failed uploaded to File System.
-        @*@ViewBag.Message*@
-    </div>
+<div class="alert alert-danger alert-dismissible" style="margin-top:20px">
+    File failed uploaded to File System.
+    @*@ViewBag.Message*@
+</div>
 }
 <form asp-action="Add_file_upload_autdit_anine_customer_quality"
       asp-controller="Admin"
@@ -51,7 +51,4 @@ else if (ViewBag.Message == "NOT_OK")
 </form>
 
 <script>
-    $(document).ready(function () {
-
-    });
 </script>
