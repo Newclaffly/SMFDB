@@ -2,6 +2,21 @@
     ViewData["Title"] = "Control_sf_project";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@if (ViewBag.Message == "OK")
+{
+    <div class="alert alert-success alert-dismissible" style="margin-top:20px">
+        File successfully uploaded to File System.
+        @*@ViewBag.Message*@
+    </div>
+}
+else if (ViewBag.Message == "NOT_OK")
+{
+    <div class="alert alert-danger alert-dismissible" style="margin-top:20px">
+        File failed uploaded to File System.
+        @*@ViewBag.Message*@
+    </div>
+}
+
 <div id="app1">
     <form asp-action="Add_file_upload_sf_project"
           asp-controller="Admin"
@@ -36,10 +51,9 @@
                                     <input id="topic" type="hidden" name="topic_sf" class="form-control">
                                 </div>
                                 <div class="form-group mt-4">
-                                    <input type="submit" class="btn btn-primary" v-on:click="submit_upload">
+                                    <input type="submit" class="btn btn-primary">
                                 </div>
                                 <div id="divloader" style="display:none">
-                                    @*<img src="~/img/photos/64x64.gif" />*@
                                 </div>
                                 <br />
                             </div>
@@ -56,20 +70,17 @@
         el: '#app1',
         data() {
             return {
-                files: new FormData(),
+                // files: new FormData(),
                 list_sf_project_option: [],
                 key: ""
             }
         },
         created: function () {
-            //this.get_list_job_concern(),
             this.get_option_sf_project()
-        //    this.set_project_number()
         },
         methods: {
             get_option_sf_project(event) {
                 axios
-                    //.post('./get_list_option_sf_project', { param1: param_id })
                     .post('./get_list_option_sf_project')
                     .then(res => { this.list_sf_project_option = res.data })
                     .catch(function (error) { console.log(error); })
@@ -79,7 +90,6 @@
                 let param_sf_no = event.target.value;
                 $('#topic').val(param_sf_no);
                 console.log(param_sf_no);
-
             },
             //submit_upload() {
             //    //this.lodaing = true
@@ -101,30 +111,7 @@
             //        this.files.append("file", fileList[i], fileList[i].name);
             //    }
             //},
-            //set_project_number() {
-            //    //var sf_no = this.selected.sf_no
-            //    //console.log(sf_no);
-            //},
-            //get_list_detail_project() {
-            //    //console.log(param_id);
-            //    axios
-            //        .post('./get_project_detail', { apply_id: '20' })
-            //        .then(res => { this.list_detail_project = res.data })
-            //        .catch(function (error) { console.log(error); })
-            //},
-            //get_list_project_cover_page() {
-            //    axios
-            //        .post('./get_vew_porject')
-            //        .then(res => { this.list_project_cover_page = res.data })
-            //        .catch(function (error) { console.log(error); })
-            //},
-            //LinkPage(param) {
-            //    //console.log(param);
-            //    window.location.href = ('../SFProject/Detail_project_view?apply_id=' + param + '')
-            //},
+
         }
     })
-    //$(document).ready(function () {
-
-    //});
 </script>

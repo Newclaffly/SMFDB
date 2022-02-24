@@ -33,9 +33,9 @@ namespace SMFDB.Controllers
         /* PROJECT CONTROL */
         public IActionResult Control_sf_project()
         {
+            ViewBag.Message = TempData["Message"];
             return View();
         }
-
 
         /* ZONE A9 */
         /* View */
@@ -80,7 +80,9 @@ namespace SMFDB.Controllers
                     file_pdf.CopyTo(stream);
                 }
             }
-            return View("~/Views/Admin/Control_sdt_anine_audit_customer_quality.cshtml"); ;
+            // View("~/Views/Admin/Control_sdt_anine_audit_customer_quality.cshtml"); 
+            return RedirectToAction("Control_sdt_anine_audit_customer_quality", "Admin");
+
         }
 
         /* ZONE Audit_first */
@@ -102,7 +104,8 @@ namespace SMFDB.Controllers
                     file_pdf.CopyTo(stream);
                 }
             }
-            return View("~/Views/Admin/Control_sdt_anine_audit_first_view.cshtml"); ;
+            //return View("~/Views/Admin/Control_sdt_anine_audit_first_view.cshtml"); 
+            return RedirectToAction("Control_sdt_anine_audit_first_view", "Admin");
         }
 
         /*  Audit_second */
@@ -124,7 +127,9 @@ namespace SMFDB.Controllers
                     file_pdf.CopyTo(stream);
                 }
             }
-            return View("~/Views/Admin/Control_sdt_anine_audit_second_view.cshtml"); ;
+            //return View("~/Views/Admin/Control_sdt_anine_audit_second_view.cshtml");
+            return RedirectToAction("Control_sdt_anine_audit_second_view", "Admin");
+
         }
 
         /*  Audit_third */
@@ -146,7 +151,7 @@ namespace SMFDB.Controllers
                     file_pdf.CopyTo(stream);
                 }
             }
-            return View("~/Views/Admin/Control_sdt_anine_audit_third_view.cshtml"); ;
+            return View("~/Views/Admin/Control_sdt_anine_audit_third_view.cshtml"); 
         }
 
         [HttpPost]
@@ -179,15 +184,17 @@ namespace SMFDB.Controllers
 
                     file_pdf.CopyTo(stream);
                 }
+                TempData["Message"] = "OK";
             }
             else
             {
-                //result_upload = "File Null";
+                TempData["Message"] = "NOT_OK";
 
             }
-            //return View("~/Views/Admin/Admin_panel_main_view.cshtml"); 
+            return RedirectToAction("Control_sf_project", "Admin");
+
             //return Content(result_upload);
-            return RedirectToAction("~/Views/Admin/Admin_panel_main_view.cshtml");
+            //return View("~/Views/Admin/Admin_panel_main_view.cshtml");
             //return Ok(result_upload);
         }
 
