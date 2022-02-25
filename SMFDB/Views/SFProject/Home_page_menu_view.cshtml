@@ -84,7 +84,7 @@
                             <template v-for="(item_list_data_news,index) in list_news_acc">
                                 <tr>
                                     <td><img height="11" alt="" src="http://43.72.2.194/sdt/images/Bullet/bullet_arrow.gif" width="14"></td>
-                                    <td>{{item_list_data_news.CREATE_DATE}}</td>
+                                    <td>{{getFormattedDate(item_list_data_news.CREATE_DATE)}} :</td>
                                     <td><a :href="item_list_data_news.LINK_SRC">{{item_list_data_news.TOPIC_POST_ENG}}</a></td>
                                     <td><img src="http://43.72.2.194/sdt/images/bullet/new.gif" alt="news"></td>
                                 </tr>
@@ -96,7 +96,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- ======= Footer ======= -->
@@ -190,7 +189,7 @@
     </div>
 </footer>
 <!-- End Footer -->
-
+<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 <script>
     var table_news = new Vue({
         el: '#annoucement_component',
@@ -209,6 +208,11 @@
                     .then(res => { this.list_news_acc = res.data })
                     .catch(function (error) { console.log(error); })
             },
+            getFormattedDate(date) {
+               // return dayjs(date, 'DD/MM/YYYY')
+                return dayjs(date).format('DD/MM/YYYY')
+            },
+
         },
         computed: {
 
@@ -226,16 +230,15 @@
             }
         },
         created: function () {
-                this.get_list_news_acc_top_three()
+            this.get_list_news_acc_top_three()
         },
         methods: {
-          get_list_news_acc_top_three() {
+            get_list_news_acc_top_three() {
                 axios
                     .post('./get_data_news_annoucement_top_three')
                     .then(res => { this.list_news_acc_top_three = res.data })
                     .catch(function (error) { console.log(error); })
             },
-
         },
         computed: {
 
