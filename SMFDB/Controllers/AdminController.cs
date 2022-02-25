@@ -50,7 +50,6 @@ namespace SMFDB.Controllers
             ViewBag.Message = TempData["Message"];
             return View();
         }
-
         public IActionResult Control_sdt_anine_audit_second_view()
         {
             ViewBag.Message = TempData["Message"];
