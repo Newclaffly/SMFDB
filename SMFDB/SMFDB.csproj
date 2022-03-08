@@ -46,6 +46,7 @@
     <Folder Include="wwwroot\PDF\QA_AX\A_nine\Audit_third\" />
     <Folder Include="wwwroot\PDF\QA_AX\A_nine\Customer_quality\" />
     <Folder Include="wwwroot\PDF\SF_PROJECT\PROJECT\" />
+    <Folder Include="wwwroot\PDF\SF_PROJECT\VDO\" />
     <Folder Include="wwwroot\PDF\TECHNICAL_AWARD\PDF\" />
     <Folder Include="wwwroot\PDF\TECHNICAL_AWARD\PPT\" />
   </ItemGroup>
