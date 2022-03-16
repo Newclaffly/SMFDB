@@ -40,6 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\img\img_control\page_sf_concept\" />
+    <Folder Include="wwwroot\img\img_control\page_sf_org\" />
     <Folder Include="wwwroot\img\sf_ogz\" />
     <Folder Include="wwwroot\PDF\QA_AX\A_nine\Audit_first\" />
     <Folder Include="wwwroot\PDF\QA_AX\A_nine\Audit_second\" />

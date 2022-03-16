@@ -35,7 +35,7 @@ namespace SMFDB.Controllers
         }
         public IActionResult Sdt_porject_view()
         {
-           
+
             return View();
         }
         public IActionResult Sdt_porject_progress_view()
