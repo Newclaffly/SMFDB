@@ -1,24 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Control_sf_project";
+    ViewData["Title"] = "Control_sf_organization";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @if (ViewBag.Message == "OK")
 {
     <div class="alert alert-success alert-dismissible" style="margin-top:20px">
         File successfully uploaded to File System.
-        @*@ViewBag.Message*@
     </div>
 }
 else if (ViewBag.Message == "NOT_OK")
 {
     <div class="alert alert-danger alert-dismissible" style="margin-top:20px">
         File failed uploaded to File System.
-        @*@ViewBag.Message*@
     </div>
 }
 
 <div id="app1">
-    <form asp-action="Add_file_upload_sf_project"
+    <form asp-action=""
           asp-controller="Admin"
           method="post"
           enctype="multipart/form-data">
@@ -30,17 +28,17 @@ else if (ViewBag.Message == "NOT_OK")
                             <div class="card-close">
                             </div>
                             <div class="card-header d-flex align-items-center">
-                                <h3 class="h4">File Upload</h3>
+                                <h3 class="h4">File Upload : Page SF Organization</h3>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Uploads file Presentation for (SF Project)</h5>
-                                <p class="card-text">Please select SF Project number for upload file only .pdf</p>
+                                <h5 class="card-title">Uploads file Image for (Page SF Organization)</h5>
+                                <p class="card-text">Please select order slide SF Organization for upload file only .jpg</p>
                                 <template>
                                     <select class="form-select form-select-lg mb-3" v-on:change="SFNo_onChange($event)" aria-label=".form-select-lg example" v-model="key">
-                                        <option value="" selected>--- Select SF Project number ---</option>
-                                        <option v-for="options in list_sf_project_option" v-bind:value="options.SF_No">
-                                            SF NO : {{ options.SF_No }} | {{ options.Project_Name}}
-                                        </option>
+                                        <option value="" selected>--- Select order slide Organization ---</option>
+                                        <!--<option v-for="options in list_sf_project_option" v-bind:value="options.SF_No">-->
+                                        @*SF NO : {{ options.SF_No }} | {{ options.Project_Name}}*@
+                                        <!--</option>-->
                                     </select>
                                 </template>
                                 <br />
@@ -70,7 +68,6 @@ else if (ViewBag.Message == "NOT_OK")
         el: '#app1',
         data() {
             return {
-                // files: new FormData(),
                 list_sf_project_option: [],
                 key: ""
             }
@@ -86,32 +83,10 @@ else if (ViewBag.Message == "NOT_OK")
                     .catch(function (error) { console.log(error); })
             },
             SFNo_onChange(event) {
-                //console.log(event.target.value);
                 let param_sf_no = event.target.value;
                 $('#topic').val(param_sf_no);
                 console.log(param_sf_no);
             },
-            //submit_upload() {
-            //    //this.lodaing = true
-            //    event.preventDefault();
-            //    const config = { header: { 'Content-Type': 'multipart/form-data' } }
-            //    axios
-            //        .post('./add_file_upload_sf_project', this.files, config)
-            //        .then(res => {
-            //            alert(res.data)
-            //            document.getElementById("uploadfile").value = null
-            //            //this.lodaing = false
-            //            //app1.get_req_issue()
-            //            console.log(res.data)
-            //        })
-            //        .catch(function (error) { console.log(error); })
-            //},
-            //files_change(fileList) {
-            //    for (let i = 0; i < fileList.length; i++) {
-            //        this.files.append("file", fileList[i], fileList[i].name);
-            //    }
-            //},
-
         }
     })
 </script>

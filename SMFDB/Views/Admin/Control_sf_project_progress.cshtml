@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Control_sf_project_progress";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@if (ViewBag.Message == "OK")
+{
+<div class="alert alert-success alert-dismissible" style="margin-top:20px">
+    File successfully uploaded to File System.
+</div>
+}
+else if (ViewBag.Message == "NOT_OK")
+{
+<div class="alert alert-danger alert-dismissible" style="margin-top:20px">
+    File failed uploaded to File System.
+</div>
+}
+<form asp-action=""
+      asp-controller="Admin"
+      method="post"
+      enctype="multipart/form-data">
+    <section class="forms">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-close">
+                        </div>
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h4">Upload project progress</h3>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Upload file image for change project progress</h5>
+                            <p class="card-text">Please upload file only .jpg</p>
+                            <div class="form-group">
+                                <input id="files" type="file" name="file_img" class="form-control-file">
+                            </div>
+                            <div class="form-group mt-4">
+                                <input type="submit" class="btn btn-primary">
+                            </div>
+                            <div id="divloader" style="display:none">
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+
+<script>
+</script>
