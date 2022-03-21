@@ -1,18 +1,18 @@
 ﻿@{
-    ViewData["Title"] = "Control_sf_concept";
+    ViewData["Title"] = "Control_image_system";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @if (ViewBag.Message == "OK")
 {
-<div class="alert alert-success alert-dismissible" style="margin-top:20px">
-    File successfully uploaded to File System.
-</div>
+    <div class="alert alert-success alert-dismissible" style="margin-top:20px">
+        File successfully uploaded to File System.
+    </div>
 }
 else if (ViewBag.Message == "NOT_OK")
 {
-<div class="alert alert-danger alert-dismissible" style="margin-top:20px">
-    File failed uploaded to File System.
-</div>
+    <div class="alert alert-danger alert-dismissible" style="margin-top:20px">
+        File failed uploaded to File System.
+    </div>
 }
 <style>
     .img_size {
@@ -127,11 +127,6 @@ else if (ViewBag.Message == "NOT_OK")
             //},
         },
         computed: {
-            list_concept_computed: function () {
-                return (
-                    this.list_img_page_concept.filter(x => x.flag_page == "page_sf_concept" && x.status_image == 'ACTIVE')
-                )
-            },
             Slide_list: function () {
                 return ((this.list_img_page.filter(a => !a.flag_page.indexOf(this.key_page))))
             },

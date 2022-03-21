@@ -490,6 +490,10 @@
                     <a asp-controller="Admin" asp-action="Control_sf_project" class="dashboard-nav-item">
                         <i class="fas fa-cogs"></i>SF Project
                     </a>
+                    <a asp-controller="Admin" asp-action="Control_image_system" class="dashboard-nav-item">
+                        <i class="fas fa-cogs"></i> Control Image
+                    </a>
+
                     <div class='dashboard-nav-dropdown'>
                         <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="fas fa-cogs"></i>SF-A9
@@ -501,10 +505,11 @@
                             <a asp-controller="Admin" asp-action="Control_sdt_anine_audit_third_view" class="dashboard-nav-dropdown-item">Audit (3rd party)</a>
                         </div>
                     </div>
-                    <a asp-controller="Admin" asp-action="Control_sf_project_progress" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Project Progress </a>
-                    <a asp-controller="Admin" asp-action="Control_sf_activity" class="dashboard-nav-item"><i class="fas fa-cogs"></i> SF Activity </a>
-                    <a asp-controller="Admin" asp-action="Control_sf_concept" class="dashboard-nav-item"><i class="fas fa-cogs"></i> SF Concept </a>
-                    <a asp-controller="Admin" asp-action="Control_sf_organization" class="dashboard-nav-item"><i class="fas fa-cogs"></i> SF Organization </a>
+
+                    @*<a asp-controller="Admin" asp-action="Control_sf_project_progress" class="dashboard-nav-item"><i class="fas fa-cogs"></i> Project Progress </a>
+                        <a asp-controller="Admin" asp-action="Control_sf_activity" class="dashboard-nav-item"><i class="fas fa-cogs"></i> SF Activity </a>
+                        <a asp-controller="Admin" asp-action="Control_sf_concept" class="dashboard-nav-item"><i class="fas fa-cogs"></i> SF Concept </a>
+                        <a asp-controller="Admin" asp-action="Control_sf_organization" class="dashboard-nav-item"><i class="fas fa-cogs"></i> SF Organization </a>*@
                     <div class="nav-item-divider"></div>
                     <a href="~/SFProject/Home_page_menu_view" class="dashboard-nav-item"><i class="fas fa-home"></i>Back to Homepage </a>
                     <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
@@ -520,6 +525,7 @@
             </div>
         </div>
     </div>
+
     @*<div class="wrapper">
          Sidebar
         <nav id="sidebar">
