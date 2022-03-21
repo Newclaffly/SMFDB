@@ -28,6 +28,14 @@ namespace SMFDB.Controllers
         {
             return View();
         }
+        public IActionResult Mrp_anine_view()
+        {
+            return View();
+        }
+        public IActionResult Project_action_plan_anine_view()
+        {
+            return View();
+        }
 
     }
 }

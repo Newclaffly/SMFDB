@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Sdt_ax_main_view";
+    ViewData["Title"] = "SDT-A1-A10";
 }
 <script src="~/lib/image-map-resizer/js/imageMapResizer.js"></script>
 @*<script src="~/lib/image-map-resizer/gruntfile.js"></script>*@
@@ -13,9 +13,17 @@
                         <div class="carousel-item active ">
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-12 text-center opacity-85">
-                                    <img src="~/img/SDTA_LAYOUT.PNG" width="100%" alt="Workplace" usemap="#m_usaMap" id="a_layout_map" />
+                                    <img src="~/img/SDTA_LAYOUT.PNG" width="80%" alt="Workplace" usemap="#m_usaMap" id="a_layout_map" />
                                     <map name="m_usaMap">
-                                        <area shape="rect" coords="1026,324,1250,558" alt="A9_1" href="@Url.Action("Main_audit_anine_view", "Anine")" asp-action="Main_audit_anine_view" asp-controller="Anine">
+                                        <area shape="rect" coords="320,356,963,685" alt="A1_A8" href="@Url.Action("Main_aone_aeight_view", "AoneAeight")" asp-action="Main_aone_aeight_view" asp-controller="AoneAeight">
+                                        <area shape="rect" coords="319,134,774,303" alt="A2" href="@Url.Action("Main_atwo_view", "Atwo")" asp-action="Main_atwo_view" asp-controller="Atwo">
+                                        <area shape="rect" coords="36,137,261,303" alt="A3" href="@Url.Action("Main_athree_view", "Athree")" asp-action="Main_athree_view" asp-controller="Athree">
+                                        <area shape="rect" coords="36,522,258,687" alt="A4" href="@Url.Action("Main_afour_view", "Afour")" asp-action="Main_afour_view" asp-controller="Afour">
+                                        <area shape="rect" coords="1023,137,1248,303" alt="A5" href="@Url.Action("Main_afive_view", "Afive")" asp-action="Main_afive_view" asp-controller="Afive">
+                                        <area shape="rect" coords="38,334,260,499" alt="A6" href="@Url.Action("Main_asix_view", "Asix")" asp-action="Main_asix_view" asp-controller="Asix">
+                                        <area shape="rect" coords="795,135,1005,305" alt="A7" href="@Url.Action("Main_aseven_view", "Aseven")" asp-action="Main_aseven_view" asp-controller="Aseven">
+                                        <area shape="rect" coords="1026,324,1250,558" alt="A9" href="@Url.Action("Main_audit_anine_view", "Anine")" asp-action="Main_audit_anine_view" asp-controller="Anine">
+                                        <area shape="rect" coords="1024,576,1251,691" alt="A10" href="@Url.Action("Main_aten_view", "Aten")" asp-action="Main_aten_view" asp-controller="Aten">
                                     </map>
                                 </div>
                             </div>
@@ -59,10 +67,12 @@
     $(document).ready(function () {
         $('map').imageMapResize();
 
-        $('#a_layout_map').click(function (e) {
+        $('img').click(function (e) {
             var offset = $(this).offset();
             var X = (e.pageX - offset.left);
             var Y = (e.pageY - offset.top);
+            //var x = event.pageX - this.offsetLeft;
+            //var y = event.pageY - this.offsetTop;
             //$('#coord').text('X: ' + X + ', Y: ' + Y);
             console.log('X: ' + X + ', Y: ' + Y);
         });

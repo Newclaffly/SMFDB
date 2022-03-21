@@ -1,0 +1,256 @@
+﻿
+@{
+    ViewBag.Title = "SDT SF-A3";
+    Layout = "~/Views/Shared/_LayoutAthree.cshtml";
+}
+<script src="~/lib/pdfjs/pdf.min.js"></script>
+<style>
+    canvas {
+        border: 1px solid black;
+        padding: 0;
+        margin: auto;
+        margin-left: 3px;
+        margin-right: 3px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        /*display: block;*/
+        width: 260px;
+        height: 140px;
+    }
+</style>
+<div class="main-wrapper">
+    <div class="main-content">
+        <div class="member-img">
+            <div id="canvas"></div>
+        </div>
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container" data-aos="zoom-out" data-aos-delay="100">
+                <h1>SMART FACTORY <span>@ViewBag.Title</span></h1>
+            </div>
+        </section><!-- End Hero -->
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+
+                    <a href="" class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member">
+                            <div class="member-img">
+                                <div id=""></div>
+                            </div>
+                            <div class="member-info">
+                                <h4>
+                                    MRP Road Map
+                                </h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="" class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                        <div class="member">
+                            <div class="member-img">
+                                <div id="" class="img-fluid"></div>
+                            </div>
+                            <div class="member-info">
+                                <h4>
+                                    Project Action Plan
+                                </h4>
+                                <span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section><!-- End Team Section -->
+
+    </div>
+</div>
+
+
+@*<script>
+        $(document).ready(function () {
+            render_anine_customer_quality();
+            render_anine_audit_first();
+            render_anine_audit_second();
+            render_anine_audit_third();
+
+            function render_anine_customer_quality() {
+                // If absolute URL from the remote server is provided, configure the CORS
+                // header on that server.
+                var url = '../PDF/QA_AX/A_nine/Customer_quality/Anine_customer_quality.pdf';
+                // Loaded via <script> tag, create shortcut to access PDF.js exports.
+                var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // The workerSrc property shall be specified.
+                pdfjsLib.GlobalWorkerOptions.workerSrc = '../lib/pdfjs/pdf.worker.js';
+                // Asynchronous download of PDF
+                var loadingTask = pdfjsLib.getDocument(url);
+                loadingTask.promise.then(function (pdf) {
+                    var canvasdiv = document.getElementById('canvas_customer_quality');
+                    var totalPages = pdf.numPages
+                    var data = [];
+                    let pageNumber = 1;
+                    //for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                        pdf.getPage(pageNumber).then(function (page) {
+                            var scale = 2;
+                            // var scale = window.devicePixelRatio || 1;
+                            // canvasdiv.className = 'filter';
+                            var viewport = page.getViewport({ scale: scale });
+                            // const para = document.createElement("p");
+                            var canvas = document.createElement('canvas');
+                            canvasdiv.appendChild(canvas);
+                            // Prepare canvas using PDF page dimensions
+                            var context = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            // Render PDF page into canvas context
+                            var renderContext = { canvasContext: context, viewport: viewport };
+                            var renderTask = page.render(renderContext);
+                            renderTask.promise.then(function () {
+                                data.push(canvas.toDataURL('image/png'))
+                                console.log(data.length + ' page(s) loaded in data')
+                            });
+                        });
+                   // }
+
+                }, function (reason) {
+                    // PDF loading error
+                    console.error(reason);
+                });
+            }
+
+            function render_anine_audit_first() {
+                // If absolute URL from the remote server is provided, configure the CORS
+                // header on that server.
+                var url = '../PDF/QA_AX/A_nine/Audit_first/Audit_anine_first_party.pdf';
+                // Loaded via <script> tag, create shortcut to access PDF.js exports.
+                var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // The workerSrc property shall be specified.
+                pdfjsLib.GlobalWorkerOptions.workerSrc = '../lib/pdfjs/pdf.worker.js';
+                // Asynchronous download of PDF
+                var loadingTask = pdfjsLib.getDocument(url);
+                loadingTask.promise.then(function (pdf) {
+                    var canvasdiv = document.getElementById('canvas_audit_first');
+                    var totalPages = pdf.numPages
+                    var data = [];
+                    let pageNumber = 1;
+                    //for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                    pdf.getPage(pageNumber).then(function (page) {
+                        var scale = 2;
+                        // var scale = window.devicePixelRatio || 1;
+                        // canvasdiv.className = 'filter';
+                        var viewport = page.getViewport({ scale: scale });
+                        // const para = document.createElement("p");
+                        var canvas = document.createElement('canvas');
+                        canvasdiv.appendChild(canvas);
+                        // Prepare canvas using PDF page dimensions
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = { canvasContext: context, viewport: viewport };
+                        var renderTask = page.render(renderContext);
+                        renderTask.promise.then(function () {
+                            data.push(canvas.toDataURL('image/png'))
+                            console.log(data.length + ' page(s) loaded in data')
+                        });
+                    });
+                    // }
+
+                }, function (reason) {
+                    // PDF loading error
+                    console.error(reason);
+                });
+            }
+
+            function render_anine_audit_second() {
+                // If absolute URL from the remote server is provided, configure the CORS
+                // header on that server.
+                var url = '../PDF/QA_AX/A_nine/Audit_second/Audit_anine_second_party.pdf';
+                // Loaded via <script> tag, create shortcut to access PDF.js exports.
+                var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // The workerSrc property shall be specified.
+                pdfjsLib.GlobalWorkerOptions.workerSrc = '../lib/pdfjs/pdf.worker.js';
+                // Asynchronous download of PDF
+                var loadingTask = pdfjsLib.getDocument(url);
+                loadingTask.promise.then(function (pdf) {
+                    var canvasdiv = document.getElementById('canvas_audit_second');
+                    var totalPages = pdf.numPages
+                    var data = [];
+                    let pageNumber = 1;
+                    //for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                    pdf.getPage(pageNumber).then(function (page) {
+                        var scale = 2;
+                        // var scale = window.devicePixelRatio || 1;
+                        // canvasdiv.className = 'filter';
+                        var viewport = page.getViewport({ scale: scale });
+                        // const para = document.createElement("p");
+                        var canvas = document.createElement('canvas');
+                        canvasdiv.appendChild(canvas);
+                        // Prepare canvas using PDF page dimensions
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = { canvasContext: context, viewport: viewport };
+                        var renderTask = page.render(renderContext);
+                        renderTask.promise.then(function () {
+                            data.push(canvas.toDataURL('image/png'))
+                            console.log(data.length + ' page(s) loaded in data')
+                        });
+                    });
+                    // }
+
+                }, function (reason) {
+                    // PDF loading error
+                    console.error(reason);
+                });
+            }
+
+            function render_anine_audit_third() {
+                // If absolute URL from the remote server is provided, configure the CORS
+                // header on that server.
+                var url = '../PDF/QA_AX/A_nine/Audit_third/Audit_anine_third_party.pdf';
+                // Loaded via <script> tag, create shortcut to access PDF.js exports.
+                var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // The workerSrc property shall be specified.
+                pdfjsLib.GlobalWorkerOptions.workerSrc = '../lib/pdfjs/pdf.worker.js';
+                // Asynchronous download of PDF
+                var loadingTask = pdfjsLib.getDocument(url);
+                loadingTask.promise.then(function (pdf) {
+                    var canvasdiv = document.getElementById('canvas_audit_third');
+                    var totalPages = pdf.numPages
+                    var data = [];
+                    let pageNumber = 1;
+                    //for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+                    pdf.getPage(pageNumber).then(function (page) {
+                        var scale = 2;
+                        // var scale = window.devicePixelRatio || 1;
+                        // canvasdiv.className = 'filter';
+                        var viewport = page.getViewport({ scale: scale });
+                        // const para = document.createElement("p");
+                        var canvas = document.createElement('canvas');
+                        canvasdiv.appendChild(canvas);
+                        // Prepare canvas using PDF page dimensions
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = { canvasContext: context, viewport: viewport };
+                        var renderTask = page.render(renderContext);
+                        renderTask.promise.then(function () {
+                            data.push(canvas.toDataURL('image/png'))
+                            console.log(data.length + ' page(s) loaded in data')
+                        });
+                    });
+                    // }
+
+                }, function (reason) {
+                    // PDF loading error
+                    console.error(reason);
+                });
+            }
+
+        });
+
+    </script>*@

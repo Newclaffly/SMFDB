@@ -3,8 +3,75 @@
     ViewBag.Title = "SFogz";
 }
 
+<style>
+    .img_size {
+        width: 85%;
+        height: 85%;
+    }
+</style>
 
-<section id="contact" class="contact">
+<div id="app_sf_org">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="zoom-out">
+            <div class="h-100">
+                <div class="py-0 px-5">
+                    <div id="carouselExampleDark" class="carousel carousel-dark slide mt-4" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <template v-for="(item, index) in list_org_computed">
+                                <div v-bind:class="(index === 0)?'carousel-item active':'carousel-item'">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class="col-12 text-center opacity-95">
+                                            <img v-bind:src="'../img/img_control/' + item.image_url" class="img_size" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    var app_sf_concept = new Vue({
+        el: '#app_sf_org',
+        data() {
+            return {
+                list_img_page_org: []
+            }
+        },
+        created: function () {
+            this.get_list_img_sf_org()
+        },
+        methods: {
+            get_list_img_sf_org() {
+                axios
+                    .post('/SmartFactory/Admin/get_list_img_project')
+                    .then(res => { this.list_img_page_org = res.data })
+                    .catch(function (error) { console.log(error); })
+            },
+        },
+        computed: {
+            list_org_computed: function () {
+                return (
+                    this.list_img_page_org.filter(x => x.flag_page == "page_sf_org" && x.status_image == 'ACTIVE')
+                )
+            },
+        }
+    })
+</script>
+
+<!--<section id="contact" class="contact">
     <div class="container" data-aos="zoom-out">
         <div class="h-100">
             <div class="py-0 px-5">
@@ -44,4 +111,5 @@
             </div>
         </div>
     </div>
-</section><!-- End Contact Section -->
+</section>-->
+<!-- End Contact Section -->

@@ -43,19 +43,24 @@ namespace SMFDB.Controllers
             return View();
         }
 
-        public IActionResult Control_sf_concept()
-        {
-            ViewBag.Message = TempData["Message"];
-            return View();
-        }
+        //public IActionResult Control_sf_concept()
+        //{
+        //    ViewBag.Message = TempData["Message"];
+        //    return View();
+        //}
 
-        public IActionResult Control_sf_activity()
-        {
-            ViewBag.Message = TempData["Message"];
-            return View();
-        }
+        //public IActionResult Control_sf_activity()
+        //{
+        //    ViewBag.Message = TempData["Message"];
+        //    return View();
+        //}
 
-        public IActionResult Control_sf_organization()
+        //public IActionResult Control_sf_organization()
+        //{
+        //    ViewBag.Message = TempData["Message"];
+        //    return View();
+        //}
+        public IActionResult Control_image_system()
         {
             ViewBag.Message = TempData["Message"];
             return View();
@@ -261,7 +266,7 @@ namespace SMFDB.Controllers
         [HttpPost]
         public IActionResult get_list_img_project()
         {
-            var data = _con_sql._query("SELECT DISTINCT [id],[image_url],[image_order],[flag_page] FROM tbSF_Control_Image WHERE [status_image] ='ACTIVE'");
+            var data = _con_sql._query("SELECT DISTINCT [id],[image_url],[image_order],[flag_page],[status_image] FROM tbSF_Control_Image WHERE [status_image] ='ACTIVE'");
             return data;
         }
 
@@ -281,7 +286,6 @@ namespace SMFDB.Controllers
                 using (var stream = new FileStream(SavePath, FileMode.Create))
                 {
                     await file_img.CopyToAsync(stream);
-
                     // file_img.CopyTo(stream);
                 }
                 TempData["Message"] = "OK";
@@ -291,7 +295,7 @@ namespace SMFDB.Controllers
                 TempData["Message"] = "NOT_OK";
 
             }
-            return RedirectToAction("Control_sf_concept", "Admin");
+            return RedirectToAction("Control_image_system", "Admin");
         }
 
 
